@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Jaypeeig [Gatsby]`,
+    title: `Jaypeeig [BETA]`,
   },
-  plugins: [`gatsby-plugin-react-helmet`],
+  plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`
+  ],
 }
