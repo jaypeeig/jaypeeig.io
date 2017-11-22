@@ -6,6 +6,7 @@ const ThirdPage = () => (
     <h1>Hi from the third page</h1>
     <p>Welcome to page 3</p>
     <Link to="/">Go back to the homepage</Link>
+    <br/>
     <Link to="/page-2/">Page 2</Link>
   </div>
 )
