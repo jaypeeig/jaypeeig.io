@@ -10,7 +10,11 @@ const IndexPage = ({data}) => (
 
     <div className="container-fluid">
       {data.allMarkdownRemark.edges.map(post => (
-          <a href={post.node.frontmatter.path}>{post.node.frontmatter.title}</a>
+        <Link 
+          key={post.node.id}
+          to={post.node.frontmatter.path} >
+          {post.node.frontmatter.title} 
+        </Link>
       ))}
     </div>
 
@@ -26,6 +30,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(limit: 10){
       edges{
         node {
+          id
           frontmatter {
             title
             path
