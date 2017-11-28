@@ -4,36 +4,45 @@ import Link from 'gatsby-link'
 
 const IndexPage = ({data}) => (
   <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
+    <h2>Hello it me! <small>jaypee</small></h2>
+    <p>Welcome to my new React Blog app.</p>
 
     <div className="container-fluid">
+      <ul>
       {data.allMarkdownRemark.edges.map(post => (
+        <li>
         <Link 
           key={post.node.id}
           to={post.node.frontmatter.path} >
           {post.node.frontmatter.title} 
         </Link>
+        </li>
       ))}
+      </ul>
     </div>
 
     <br/>
-    <Link to="/page-2/">Go to page 2</Link>
     <br/>
-    <Link to="/page-3/">Go to page 3</Link>
+    <Link to="/about/"><small>About</small></Link>
   </div>
 )
 
+
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(limit: 10){
+    allMarkdownRemark(
+      limit: 10
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: {  published: { eq: true } } }
+    ){
       edges{
         node {
           id
           frontmatter {
             title
             path
+            published
+            date
           }
         }
       }
